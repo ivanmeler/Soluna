@@ -60,7 +60,7 @@ public class Util {
 	public static boolean grabLauncher(String md5, File file, int tries) {
 		try {
 			URL url = new URL("http://s3.amazonaws.com/Minecraft.Download/launcher/launcher.pack.lzma");//Will be replaced with cust link
-			//URL url1 = new URL("http://solunaget.net84.net/servers.dat");
+			//URL url1 = new URL("http://solunaget.net84.net/servers.dat");//Try to get it working
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection(Proxy.NO_PROXY);
 
 			connection.setUseCaches(false);

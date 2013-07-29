@@ -56,7 +56,7 @@ public class Bootstrap extends JFrame {
 		System.out.println(System.getProperty("os.name") + " " + System.getProperty("os.version") + " " + System.getProperty("os.arch"));
 		System.out.println(System.getProperty("java.version") + " " + System.getProperty("java.vendor") + " " + System.getProperty("sun.arch.data.model"));
 		
-		JOptionPane.showMessageDialog(null, "Soluna Skins support is still in beta.\nUpdates will be posted at http://www.solunagaming.tk/launcher.", "Launcher by Ivan Meler ", JOptionPane.WARNING_MESSAGE);
+		//JOptionPane.showMessageDialog(null, "Soluna Skins support is still in beta.\nUpdates will be posted at http://www.solunalauncher.tk/.", "Launcher by Ivan Meler ", JOptionPane.WARNING_MESSAGE);
 	}
 
 	public void run() {
@@ -165,7 +165,7 @@ public class Bootstrap extends JFrame {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		setTitle("Soluna Launcher 1.6 + Soluna Skins 0.9b");
+		setTitle("Soluna Launcher 1.6 By Ivan Meler");
 	}
 
 	public static void main(String[] args) {
@@ -175,7 +175,7 @@ public class Bootstrap extends JFrame {
 		System.out.println("Current proxy version: " + mineshafterBootstrapVersion);
 		System.out.println("Gotten proxy version: " + v);
 		if (mineshafterBootstrapVersion < v) {
-			JOptionPane.showMessageDialog(null, "A new version of Soluna Launcher is available at http://www.solunagaming.tk/launcher/\nGo get it.", "Update Available", JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null, "A new version of Soluna Launcher is available at http://www.solunalauncher.tk/\nGo get it.", "Soluna Update", JOptionPane.PLAIN_MESSAGE);
 			//System.exit(0);
 		}
 
