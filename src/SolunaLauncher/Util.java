@@ -16,6 +16,7 @@ import SolunaLauncher.util.SimpleRequest;
 
 public class Util {
 	public static final String APPLICATION_NAME = "minecraft";
+	private static final float SolunaLauncher = 0;
 
 	public static enum OS {
 		WINDOWS, MACOS, SOLARIS, LINUX, UNKNOWN;

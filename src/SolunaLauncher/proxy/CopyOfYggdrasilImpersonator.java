@@ -9,28 +9,31 @@ import java.util.List;
 import java.util.Map;
 
 import SolunaLauncher.Util;
+import SolunaLauncher.proxy.CopyOfYggdrasilImpersonator.ProfilesJSON.OuterProfile;
+
 import com.google.gson.Gson;
 
-public class YggdrasilImpersonator {
+public class CopyOfYggdrasilImpersonator {
 	private List<Profile> profiles;
 	private Gson gson;
 
-	public YggdrasilImpersonator(File profilesFile) {
+	public CopyOfYggdrasilImpersonator(File profilesFile) {
 		this.profiles = Collections.synchronizedList(new ArrayList<Profile>());
 		this.gson = new Gson();
 
 		try {
 			ProfilesJSON profiles = gson.fromJson(new FileReader(profilesFile), ProfilesJSON.class);
-			Map<String, Profile> ps = profiles.authenticationDatabase;
+			Map<String, OuterProfile> ps = profiles.profiles;
 			for (String name : ps.keySet()) {
-				Profile p = ps.get(name);
+				OuterProfile v = ps.get(name);
+				Profile p = v.authentication;
 				if (p == null) continue;
 				if (p.displayName == null || p.displayName.length() == 0) p.displayName = p.username;
 				this.profiles.add(p);
 			}
 		} catch (FileNotFoundException e) {
 			return;
-		} catch (NullPointerException e) {
+		} catch(NullPointerException e) {
 			return;
 		}
 
@@ -86,10 +89,14 @@ public class YggdrasilImpersonator {
 	}
 
 	public class ProfilesJSON {
-		public Map<String, Profile> profiles;
+		public Map<String, OuterProfile> profiles;
 		public String selectedProfile;
 		public String clientToken;
-		public Map<String, Profile> authenticationDatabase;
+
+		public class OuterProfile {
+			public String name;
+			public Profile authentication;
+		}
 	}
 
 	public class Profile {
@@ -97,9 +104,6 @@ public class YggdrasilImpersonator {
 		public String accessToken;
 		public String uuid;
 		public String displayName;
-
-		public String name;
-		public String playerUUID;
 
 		public Profile(String u, String t, String id, String d) {
 			username = u;

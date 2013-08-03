@@ -36,7 +36,7 @@ public class Bootstrap extends JFrame {
 
 	private static final long serialVersionUID = 1;
 	private static int bootstrapVersion = 4;
-	private static int mineshafterBootstrapVersion = 21;
+	private static int SolunaBootstrapVersion = 22;
 
 	private final File workDir;
 	private final File launcherJar;
@@ -72,8 +72,12 @@ public class Bootstrap extends JFrame {
 	}
 
 	public void renameNew() {
-		if (this.packedLauncherJar.exists() && !this.packedLauncherJar.isFile()) this.packedLauncherJar.delete();
-		if (this.packedLauncherJarNew.isFile()) this.packedLauncherJarNew.renameTo(this.packedLauncherJar);
+		//if (this.packedLauncherJar.exists() && !this.packedLauncherJar.isFile()) this.packedLauncherJar.delete();
+		//if (this.packedLauncherJarNew.isFile()) this.packedLauncherJarNew.renameTo(this.packedLauncherJar);
+	if (this.packedLauncherJarNew.isFile()) {
+	    this.packedLauncherJar.delete();
+	    this.packedLauncherJarNew.renameTo(this.packedLauncherJar);
+	 }
 	}
 
 	public void unpack() {
@@ -165,16 +169,20 @@ public class Bootstrap extends JFrame {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
+		
+		
+			//float t = Util.getTitleName();
 		setTitle("Soluna Launcher 1.6 By Ivan Meler");
-	}
+		
+		}
 
 	public static void main(String[] args) {
 		mainThread = Thread.currentThread();
 
 		float v = Util.getCurrentBootstrapVersion();
-		System.out.println("Current proxy version: " + mineshafterBootstrapVersion);
-		System.out.println("Gotten proxy version: " + v);
-		if (mineshafterBootstrapVersion < v) {
+		System.out.println("Client version: " + SolunaBootstrapVersion);
+		System.out.println("Server version: " + v);
+		if (SolunaBootstrapVersion < v) {
 			JOptionPane.showMessageDialog(null, "A new version of Soluna Launcher is available at http://www.solunalauncher.tk/\nGo get it.", "Soluna Update", JOptionPane.PLAIN_MESSAGE);
 			//System.exit(0);
 		}
